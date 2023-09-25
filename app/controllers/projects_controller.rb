@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
-    @projects = current_user.projects
+    @projects = current_user.projects.order(created_at: :desc)
   end
 
   # GET /projects/1 or /projects/1.json
@@ -66,6 +66,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name, :description)
+      params.require(:project).permit(:name, :description, files: [])
     end
 end

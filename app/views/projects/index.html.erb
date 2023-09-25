@@ -1,14 +1,26 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Projects</h1>
-
-<div id="projects">
-  <% @projects.each do |project| %>
-    <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New project", new_project_path %>
+<h2 class='card-title d-flex justify-content-between mb-4'>
+  <span> Projects </span>
+  <%= link_to "New project", new_project_path, class: "btn btn-primary"%>
+</h2>
+<% @projects.each do |project| %>
+  <div class="card text-bg-white mb-3">
+    <div class="card-body d-flex position-relative justify-content-between">
+      <div class="p-2">
+        <h5 class='card-title'><%= project.name %> </h5>
+        <p class='card-title'><%= project.description %> </p>
+        <%= link_to "", edit_project_path(project), class: "my-link stretched-link"%>
+      </div>
+      <div class="p-2">
+        <div class="dropdown">
+          <a class="" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-three-dots-vertical"></i>
+          </a>
+          <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu2">
+            <li><%= link_to "Edit", edit_project_path(project), class: "dropdown-item" %></li>
+            <li><%= button_to "Delete", project, method: :delete, class: "dropdown-item" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end%>

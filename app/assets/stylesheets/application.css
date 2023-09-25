@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+ .my-link {
+    opacity: 0;
+    overflow: hidden;
+    height: 0;
+    width: 0;
+    display: block;
+  }
